@@ -1,0 +1,99 @@
+{
+  "name": "serverless-react-stack",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "lint": "eslint '**/*.{js,jsx}'",
+    "format": "prettier --write '**/*.{js,jsx}'",
+    "dev": "binci dev"
+  },
+  "devDependencies": {
+    "babel": "^6.23.0",
+    "babel-eslint": "^10.0.1",
+    "body-parser": "^1.19.0",
+    "eslint": "^5.16.0",
+    "eslint-config-prettier": "^4.2.0",
+    "eslint-plugin-import": "^2.17.2",
+    "eslint-plugin-node": "^9.0.1",
+    "eslint-plugin-prettier": "^3.0.1",
+    "eslint-plugin-promise": "^4.1.1",
+    "eslint-plugin-react": "^7.13.0",
+    "husky": "^2.2.0",
+    "lint-staged": "^8.1.6",
+    "prettier": "^1.17.0",
+    "serverless": "^2.64.1",
+    "serverless-offline": "^8.2.0",
+    "serverless-offline-multi": "^1.2.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx}": [
+      "eslint --fix",
+      "git add"
+    ]
+  },
+  "eslintConfig": {
+    "parser": "babel-eslint",
+    "parserOptions": {
+      "jsx": true
+    },
+    "env": {
+      "es6": true,
+      "browser": true,
+      "node": true,
+      "jest": true
+    },
+    "globals": {
+      "expect": true,
+      "fixture": true,
+      "log": true
+    },
+    "rules": {
+      "camelcase": 0,
+      "no-console": 0,
+      "prettier/prettier": "error",
+      "no-empty": [
+        "error",
+        {
+          "allowEmptyCatch": true
+        }
+      ],
+      "no-unused-vars": [
+        "error",
+        {
+          "vars": "all",
+          "args": "none",
+          "ignoreRestSiblings": true
+        }
+      ],
+      "node/no-deprecated-api": 0,
+      "react/display-name": 0,
+      "react/jsx-no-target-blank": 0,
+      "react/no-children-prop": 0,
+      "react/no-find-dom-node": 0,
+      "react/no-string-refs": 0
+    },
+    "settings": {
+      "react": {
+        "version": "17.0"
+      }
+    },
+    "extends": [
+      "eslint:recommended",
+      "plugin:react/recommended",
+      "plugin:prettier/recommended"
+    ]
+  },
+  "eslintIgnore": [
+    "dist/",
+    ".cache/",
+    "coverage/",
+    "node_modules/"
+  ],
+  "dependencies": {}
+}

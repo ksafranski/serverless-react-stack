@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Web Project</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="viewport-fit=cover,initial-scale=1,maximum-scale=1,user-scalable=no,width=device-width"
+    />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src * data: filesystem: about: ws: wss: 'unsafe-inline' 'unsafe-eval' blob: ;
+      worker-src * data: 'unsafe-inline' 'unsafe-eval' blob: gap: ; script-src * data: 'unsafe-inline' 'unsafe-eval' blob: gap: ;
+      connect-src * data: 'unsafe-inline' blob: ;
+      img-src * data: 'unsafe-inline' blob: ;
+      frame-src * data: blob: ;
+      style-src * data: 'unsafe-inline' blob: gap: ;
+      font-src * data: 'unsafe-inline' blob: ;"
+    />
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/index.jsx"></script>
+  </body>
+</html>

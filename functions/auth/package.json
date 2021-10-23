@@ -1,0 +1,8 @@
+{
+  "name": "auth",
+  "version": "1.0.0",
+  "license": "UNLICENSED",
+  "scripts": {
+    "dev": "../../node_modules/.bin/sls offline"
+  }
+}
