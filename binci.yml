@@ -7,6 +7,7 @@ services:
         - POSTGRES_USER=postgres
         - POSTGRES_PASSWORD=postgres
         - POSTGRES_DB=postgress
+      stopTimeSecs: 3 # Ensure shutdown
 volumes:
   - /var/run/docker.sock:/var/run/docker.sock
 expose:
