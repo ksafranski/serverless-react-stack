@@ -1,11 +1,11 @@
 'use strict'
 
-module.exports.hello = async event => {
+module.exports.ping = async event => {
   return {
     statusCode: 200,
     body: JSON.stringify(
       {
-        message: `Got ${process.env.PGHOST}`,
+        message: `Ok`,
       },
       null,
       2

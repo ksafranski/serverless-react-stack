@@ -1,0 +1,30 @@
+.app-container {
+  width: 30em;
+  border: 1px solid #eee;
+  padding: 3em;
+  border-radius: 0.4em;
+  box-shadow: 0 0 0.3em 0 rgba(255, 255, 255, 1), 0 0 3em 0 rgba(0, 0, 0, 0.1);
+  text-align: center;
+  line-height: 1.7;
+  letter-spacing: 0.1em;
+
+  padding-bottom: 5em;
+
+  color: #666;
+
+  .status-icon {
+    font-weight: 800;
+
+    &.incomplete {
+      color: #666;
+    }
+
+    &.positive {
+      color: green;
+    }
+
+    &.negative {
+      color: red;
+    }
+  }
+}

@@ -12,10 +12,10 @@ provider:
 
 functions:
   hello:
-    handler: handler.hello
+    handler: handler.ping
     events:
       - httpApi:
-          path: /test
+          path: /ping
           method: get
 
 plugins:
