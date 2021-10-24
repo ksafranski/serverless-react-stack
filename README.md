@@ -68,7 +68,7 @@ _Note: use a volume (in `binci.yml`) to mount the certs directory from your loca
 The only other modifications you'll need are:
 
 1. Expose `443:443` in `/binci.yml`
-2. In `/web/vite.config.js` set `server.hmr.port` to `80` and `server.hmr.protocol` to `wss`
+2. In `/web/vite.config.js` set `server.hmr.port` to `443` and `server.hmr.protocol` to `wss`
 
 ## Deploying
 
