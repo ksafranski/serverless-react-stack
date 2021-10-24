@@ -35,3 +35,7 @@ The web app (`/web`) is a simple React starter. It uses the [Vite](https://vitej
 The `/functions` directory is where your functions should reside. To add functions you can use the `serverless create` command or simply add your `serverless.yml` and `handler.js` files and build from there.
 
 Once you have a new function directory setup just add an entry to the `functions` array in `/local.config.js`.
+
+## Databases and Other Services
+
+In the `binci.yml` you can configure other containers as services and expose them to the running container.
