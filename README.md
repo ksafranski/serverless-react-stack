@@ -63,7 +63,7 @@ server {
   # Rest of the file remains the same...
 ```
 
-\*Note: use a volume (in `binci.yml`) to mount the certs directory from your local/host system or be sure to add them to `.gitignore` so you don't push them to the repo`
+_Note: use a volume (in `binci.yml`) to mount the certs directory from your local/host system or be sure to add them to `.gitignore` so you don't push them to the repo._
 
 The only other modifications you'll need are:
 
