@@ -64,11 +64,24 @@ const functionsProcCommands = config.functions
   )
   .join(' ')
 
+const environmentVariables = `
+export WEB_HTTP_PATH=${config.web.httpPath}
+${config.functions
+  .map(
+    l => `
+export FUNCTION_${l.name.toUpperCase()}_HTTP_PORT=${l.httpPort}
+export FUNCTION_${l.name.toUpperCase()}_HTTP_PATH=${l.httpPath}
+`
+  )
+  .join('')}
+`
+
 const startupScript = `
 #!/bin/sh
 concurrently ${procNames} \
   "cd ./web && yarn dev" \
-  ${functionsProcCommands}
+  ${functionsProcCommands} \
+  ${environmentVariables}
 `
 
 writeFile('./tmp/startup.sh', startupScript)

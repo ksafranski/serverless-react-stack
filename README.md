@@ -40,6 +40,20 @@ Once you have a new function directory setup just add an entry to the `functions
 
 The functions run with `serverless offline` so changes are applied on save just as happens with the web app's HMR.
 
+## Environment Variables
+
+The startup script will export a small set of environment variable on run. These include:
+
+```
+WEB_HTTP_PATH=/
+
+# Mapped over functions config...
+FUNCTION_<NAME>_HTTP_PORT=<NUMBER>
+FUNCTION_<NAME>_HTTP_PATH=<STRING>
+```
+
+You can set additional env vars in the `binci.yml` config via static `FOO=bar`, internal `FOO=$BAR` or imported from the host system `FOO=${BAR}`
+
 ## Databases and Other Services
 
 In the `binci.yml` you can configure other containers as services and expose them to the running container.
