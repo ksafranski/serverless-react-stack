@@ -13,7 +13,7 @@ server {
   listen 80 default_server;
   server_name _;
 
-  location ${config.web.httpPath} {
+  location ${config.web.proxyRoute} {
     proxy_pass  http://127.0.0.1:${config.web.httpPort};
     proxy_set_header Host $host;
     proxy_set_header X-Real-IP $remote_addr;
@@ -26,11 +26,16 @@ server {
 ${config.functions
   .map(
     l => `
-  location ~ ${l.httpPath}/(?<path>.+) {
-    proxy_pass  http://127.0.0.1:${l.httpPort}/$path$is_args$args;
+  location ~ ${l.proxyRoute}${!l.websocketPort ? '/(?<path>.+)' : ''} {
+    proxy_pass  http://127.0.0.1:${
+      l.httpPort ? l.httpPort : l.websocketPort ? l.websocketPort : 9999
+    }${!l.websocketPort ? '/$path$is_args$args' : ''};
     proxy_set_header Host $host;
     proxy_set_header X-Real-IP $remote_addr;
     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection "upgrade";
+    proxy_read_timeout 86400;
   }
 `
   )
@@ -58,9 +63,17 @@ const procNames = `-n web,${config.functions.map(l => l.name).join(',')}`
 const functionsProcCommands = config.functions
   .map(
     l =>
-      `"cd ${l.path} && $(npm bin)/sls offline --httpPort ${
+      `"cd ${l.path} && $(npm bin)/sls offline ${
+        l.httpPort ? `--httpPort ${l.httpPort}` : ''
+      } ${
+        l.websocketPort ? `--websocketPort ${l.websocketPort}` : ''
+      } --lambdaPort ${
         l.httpPort
-      } --lambdaPort ${l.httpPort + 1000}"`
+          ? l.httpPort + 1000
+          : l.websocketPort
+          ? l.websocketPort + 1000
+          : 9999
+      }"`
   )
   .join(' ')
 

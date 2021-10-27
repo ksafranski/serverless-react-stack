@@ -1,6 +1,6 @@
 module.exports = {
   web: {
-    httpPath: '/',
+    proxyRoute: '/',
     httpPort: 8080,
   },
   functions: [
@@ -8,13 +8,19 @@ module.exports = {
       name: 'auth',
       path: './functions/auth',
       httpPort: 8081,
-      httpPath: '/api/auth',
+      proxyRoute: '/api/auth',
     },
     {
       name: 'data',
       path: './functions/data',
       httpPort: 8082,
-      httpPath: '/api/data',
+      proxyRoute: '/api/data',
+    },
+    {
+      name: 'socket',
+      path: './functions/socket',
+      websocketPort: 8083,
+      proxyRoute: '/api/socket',
     },
   ],
 }

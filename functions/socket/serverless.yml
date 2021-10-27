@@ -1,0 +1,30 @@
+service: socket
+# app and org for use with dashboard.serverless.com
+#app: your-app-name
+#org: your-org-name
+
+frameworkVersion: '2'
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  lambdaHashingVersion: 20201221
+
+functions:
+  websocket:
+    handler: handler.socket
+    events:
+      - websocket:
+          route: $connect
+
+      - websocket:
+          route: ping
+
+      - websocket:
+          route: $default
+
+      - websocket:
+          route: $disconnect
+
+plugins:
+  - serverless-offline
