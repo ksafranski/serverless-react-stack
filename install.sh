@@ -10,10 +10,10 @@ echo "${BLUE}Building Docker Image...${NC}${DIVIDER}"
 docker build ./docker -t serverless-react-stack
 
 echo "\n\n\n${BLUE}Installing Root Dependencies...${NC}${DIVIDER}"
-binci -e "yarn"
+binci install:base
 
 echo "\n\n\n${BLUE}Installing Web Dependencies...${NC}${DIVIDER}"
-binci -e "cd web && yarn"
+binci install:web
 
 echo "\n\n\n${BLUE}Installing Function Dependencies...${NC}${DIVIDER}"
-binci -e 'for d in /app/functions/*/; do cd "$d" && echo ">>> Installing for $d" && yarn; done'
+binci install:functions

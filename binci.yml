@@ -19,6 +19,15 @@ before: |
   export PGDATABASE=postgres
   export PGPORT=5432
 tasks:
+  install:base:
+    disable: '*'
+    cmd: yarn
+  install:web:
+    disable: '*'
+    cmd: cd web && yarn
+  install:functions:
+    disable: '*'
+    cmd: for d in /app/functions/*/; do cd "$d" && echo ">>> Installing for $d" && yarn; done
   env: env | sort
   shell: /bin/sh
   dev: |
