@@ -1,7 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import './App.scss'
 
-const StatusIcon = ({ status, completed }) => {
+interface StatusIconProps {
+  status: string
+  completed: boolean
+}
+
+const StatusIcon = ({ status, completed }: StatusIconProps) => {
   return !completed ? (
     <span className='status-icon incomplete'>?</span>
   ) : status ? (

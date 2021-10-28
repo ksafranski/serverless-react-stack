@@ -27,4 +27,5 @@ functions:
           route: $disconnect
 
 plugins:
+  - serverless-plugin-typescript
   - serverless-offline
