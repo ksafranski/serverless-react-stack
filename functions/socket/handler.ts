@@ -1,6 +1,7 @@
-'use strict'
+import log from './@shared/logger/log'
 
 module.exports.socket = async event => {
+  log('info', { message: 'Socket Request', event })
   const {
     requestContext: { routeKey, connectionId },
   } = event

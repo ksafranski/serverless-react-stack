@@ -9,6 +9,18 @@ provider:
   name: aws
   runtime: nodejs12.x
   lambdaHashingVersion: 20201221
+  # stage: ${opt:stage, 'dev'}
+
+#   environment:
+#     MONGO_CONN: ${self.custom.mongoConn.${self:provider.stage}}
+
+# custom:
+#   stages:
+#     - dev
+#     - production
+#   mongoConn:
+#     dev: ${env:MONGO_CONN}
+#     production: ${ssm:/app/production/mongo-conn}
 
 functions:
   hello:

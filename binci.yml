@@ -1,23 +1,19 @@
 from: serverless-react-stack
 workDir: /app
-services:
-  - postgres:
-      from: postgres:12.7 # Highest version supported by Aurora
-      env:
-        - POSTGRES_USER=postgres
-        - POSTGRES_PASSWORD=postgres
-        - POSTGRES_DB=postgress
-      stopTimeSecs: 3 # Ensure shutdown
+# services:
+#   - mongo:
+#     from: mongo:4.4
+#     stopTimeSecs: 3
+#     env:
+#       - MONGO_INITDB_ROOT_USERNAME=foo
+#       - MONGO_INITDB_ROOT_PASSWORD=bar
+#       - MONGO_INITDB_DATABASE=mydb
 volumes:
   - /var/run/docker.sock:/var/run/docker.sock
 expose:
   - 80:80
-before: |
-  export PGHOST=$POSTGRES_PORT_5432_TCP_ADDR
-  export PGUSER=postgres
-  export PGPASSWORD=postgres
-  export PGDATABASE=postgres
-  export PGPORT=5432
+# before: |
+#   export MONGO_CONN=mongodb://foo:bar@$MONGO_PORT_27017_TCP_ADDR:27017
 tasks:
   install:base:
     disable: '*'
