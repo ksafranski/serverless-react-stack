@@ -23,7 +23,10 @@ tasks:
     cmd: cd web && yarn
   install:functions:
     disable: '*'
-    cmd: for d in /app/functions/*/; do cd "$d" && echo ">>> Installing for $d" && yarn; done
+    cmd: for d in /app/functions/*/; do cd "$d" && echo ">>> Installing for functions/$d" && yarn; done
+  install:shared:
+    disable: '*'
+    cmd: for d in /app/shared/*/; do cd "$d" && echo ">>> Installing for shared/$d" && yarn; done
   env: env | sort
   shell: /bin/sh
   dev: |

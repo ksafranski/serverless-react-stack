@@ -12,6 +12,9 @@ docker build ./docker -t serverless-react-stack
 echo "\n\n\n${BLUE}Installing Root Dependencies...${NC}${DIVIDER}"
 binci install:base
 
+echo "\n\n\n${BLUE}Installing Shared Dependencies...${NC}${DIVIDER}"
+binci install:shared
+
 echo "\n\n\n${BLUE}Installing Web Dependencies...${NC}${DIVIDER}"
 binci install:web
 
