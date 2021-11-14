@@ -1,4 +1,4 @@
-import log from '@shared/logger/log'
+import log from './@shared/logger/log'
 
 module.exports.ping = async event => {
   log('info', { message: 'Ping Request', event })

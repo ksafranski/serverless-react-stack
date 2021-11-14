@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import './App.scss'
 
+import log from '@shared/logger/log'
+
 interface StatusIconProps {
   status: string
   completed: boolean
@@ -44,6 +46,8 @@ const App = () => {
     socket.addEventListener('open', () => {
       setResFromSocket(true)
     })
+
+    log('info', { message: 'App Loaded' })
   }, [])
 
   return (
