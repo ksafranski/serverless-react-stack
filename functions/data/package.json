@@ -8,5 +8,8 @@
   "devDependencies": {
     "serverless-plugin-typescript": "^2.1.0",
     "typescript": "^4.4.4"
+  },
+  "dependencies": {
+    "@shared/logger": "^1.0.0"
   }
 }

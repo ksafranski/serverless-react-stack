@@ -1,3 +1,4 @@
+import moment from 'moment'
 export default (level: string, payload: any): void => {
-  console[level](payload)
+  console[level](moment().format('LLL'), payload)
 }

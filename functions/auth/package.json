@@ -5,6 +5,9 @@
   "scripts": {
     "dev": "../../node_modules/.bin/sls offline"
   },
+  "dependencies": {
+    "@shared/logger": "1.0.0"
+  },
   "devDependencies": {
     "serverless-plugin-typescript": "^2.1.0",
     "typescript": "^4.4.4"

@@ -1,8 +1,5 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
-    "paths": {
-      "@shared/*": ["./@shared/*"]
-    }
+    "baseUrl": "."
   }
 }

@@ -13,6 +13,7 @@
     "vite": "^2.6.10"
   },
   "dependencies": {
+    "@shared/logger": "^1.0.0",
     "react": "^17.0.2"
   }
 }

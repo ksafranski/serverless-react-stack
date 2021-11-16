@@ -1,7 +1,7 @@
-import log from './@shared/logger/log'
+import log from '@shared/logger'
 
 module.exports.ping = async event => {
-  log('info', { message: 'Ping Request', event })
+  log('info', event)
   return {
     statusCode: 200,
     body: JSON.stringify(

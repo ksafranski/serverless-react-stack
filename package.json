@@ -8,6 +8,12 @@
     "format": "prettier --write '**/*.{js,jsx}'",
     "dev": "binci dev"
   },
+  "private": true,
+  "workspaces": [
+    "shared/*",
+    "functions/*",
+    "web/"
+  ],
   "devDependencies": {
     "babel": "^6.23.0",
     "babel-eslint": "^10.0.1",
@@ -20,6 +26,7 @@
     "eslint-plugin-promise": "^4.1.1",
     "eslint-plugin-react": "^7.13.0",
     "husky": "^2.2.0",
+    "lerna": "^4.0.0",
     "lint-staged": "^8.1.6",
     "prettier": "^1.17.0",
     "serverless": "^2.64.1",
@@ -94,6 +101,5 @@
     ".cache/",
     "coverage/",
     "node_modules/"
-  ],
-  "dependencies": {}
+  ]
 }

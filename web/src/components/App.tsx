@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import './App.scss'
 
-import log from '@shared/logger/log'
-
 interface StatusIconProps {
   status: string
   completed: boolean
@@ -23,7 +21,8 @@ const App = () => {
   const [resFromData, setResFromData] = useState(false)
   const [resFromSocket, setResFromSocket] = useState(false)
   const [isCompleted, setIsCompleted] = useState(false)
-  useEffect(async () => {
+
+  const init = async () => {
     try {
       const authPing = await (
         await fetch('http://localhost/api/auth/ping')
@@ -46,8 +45,10 @@ const App = () => {
     socket.addEventListener('open', () => {
       setResFromSocket(true)
     })
+  }
 
-    log('info', { message: 'App Loaded' })
+  useEffect(() => {
+    init()
   }, [])
 
   return (
