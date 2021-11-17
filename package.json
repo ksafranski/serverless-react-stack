@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "prepublish": "lerna run --scope=\"@shared/*\" build",
-    "clean": "lerna run clean",
+    "clean": "lerna run clean && rm -rf node_modules",
     "lint": "eslint '**/*.{js,jsx}'",
     "format": "prettier --write '**/*.{js,jsx}'",
     "dev": "binci dev"
