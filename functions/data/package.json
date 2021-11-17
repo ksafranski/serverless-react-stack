@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "license": "UNLICENSED",
   "scripts": {
+    "clean": "rm -rf node_modules dist coverage .serverless",
     "dev": "../../node_modules/.bin/sls offline"
   },
   "devDependencies": {
