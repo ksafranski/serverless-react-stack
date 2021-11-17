@@ -2,20 +2,20 @@ dockerfile: ./docker/Dockerfile
 rebuildOnChange:
   - ./docker/nginx.conf
 workDir: /app
-# services:
-#   - mongo:
-#     from: mongo:4.4
-#     stopTimeSecs: 3
-#     env:
-#       - MONGO_INITDB_ROOT_USERNAME=foo
-#       - MONGO_INITDB_ROOT_PASSWORD=bar
-#       - MONGO_INITDB_DATABASE=mydb
+services:
+  - mongo:
+      from: mongo:4.4
+      stopTimeSecs: 3
+      env:
+        - MONGO_INITDB_ROOT_USERNAME=foo
+        - MONGO_INITDB_ROOT_PASSWORD=bar
+        - MONGO_INITDB_DATABASE=mydb
 volumes:
   - /var/run/docker.sock:/var/run/docker.sock
 expose:
   - 80:80
-# before: |
-#   export MONGO_CONN=mongodb://foo:bar@$MONGO_PORT_27017_TCP_ADDR:27017
+before: |
+  export MONGO_CONN=mongodb://foo:bar@$MONGO_PORT_27017_TCP_ADDR:27017
 tasks:
   install:
     disable: '*'

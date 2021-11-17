@@ -1,8 +1,21 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
-    "paths": {
-      "@shared/*": ["./@shared/*"]
-    }
-  }
+    "lib": ["ES7"],
+    "removeComments": true,
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "target": "es2017",
+    "outDir": "dist",
+    "sourceRoot": "src",
+    "esModuleInterop": true,
+    "declaration": true,
+    "baseUrl": "."
+  },
+  "include": ["./src/**/*.ts"],
+  "exclude": [
+    ".serverless/**/*",
+    "./**/__tests__/*",
+    "./**/.serverless/**/*",
+    "./**/.webpack/**/*"
+  ]
 }

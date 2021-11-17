@@ -1,9 +1,7 @@
-service: auth
-# app and org for use with dashboard.serverless.com
-#app: your-app-name
-#org: your-org-name
-
-frameworkVersion: '2'
+service: data
+frameworkVersion: '>=2.0.0'
+variablesResolutionMode: 20210326
+projectDir: ../..
 
 provider:
   name: aws
@@ -12,12 +10,12 @@ provider:
 
 functions:
   hello:
-    handler: handler.ping
+    handler: src/handler.ping
     events:
       - httpApi:
           path: /ping
           method: get
 
 plugins:
-  - serverless-plugin-typescript
+  - serverless-bundle
   - serverless-offline

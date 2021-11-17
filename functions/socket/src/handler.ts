@@ -1,4 +1,7 @@
-module.exports.socket = async event => {
+import log from '@shared/logger'
+
+export const socket = async event => {
+  log('info', event)
   const {
     requestContext: { routeKey, connectionId },
   } = event

@@ -1,6 +1,6 @@
 FROM nginx:1.20-alpine
 
-COPY nginx.conf /etc/nginx
+COPY docker/nginx.conf /etc/nginx
 
 # Install dependencies
 RUN apk --no-cache add --virtual python && \

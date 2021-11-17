@@ -1,6 +1,6 @@
 import log from '@shared/logger'
 
-module.exports.ping = async event => {
+export const ping = async event => {
   log('info', event)
   return {
     statusCode: 200,

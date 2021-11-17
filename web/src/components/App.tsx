@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import log from '@shared/logger'
 import './App.scss'
 
 interface StatusIconProps {
@@ -45,6 +46,7 @@ const App = () => {
     socket.addEventListener('open', () => {
       setResFromSocket(true)
     })
+    log('info', { message: 'App started' })
   }
 
   useEffect(() => {

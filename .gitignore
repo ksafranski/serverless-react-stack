@@ -4,6 +4,6 @@ logs/
 tmp/
 .cache/
 dist/
+.webpack/
 **/*.out
-**/*.log
 **/*.log
