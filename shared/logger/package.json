@@ -1,9 +1,17 @@
 {
   "name": "@shared/logger",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "dist/index.js",
   "license": "MIT",
+  "scripts": {
+    "prepublish": "npm run build",
+    "build": "tsc",
+    "clean": "rm -rf node_modules dist"
+  },
   "dependencies": {
     "moment": "^2.29.1"
+  },
+  "devDependencies": {
+    "typescript": "^4.4.4"
   }
 }

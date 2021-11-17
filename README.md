@@ -12,7 +12,7 @@ There are only three dependencies required to run this project:
 - NodeJS: Run local setup
 - Binci: Lightweight, ephemeral container orchastration (`npm i binci -g`)
 
-Once the above dependencies are installed you can build the local docker image and install all dependencies by running the `./install.sh` script in the root of the project.
+Once the above dependencies are installed you can build the local docker image and install all dependencies by running `binci install`.
 
 ## Running Locally
 
@@ -84,10 +84,26 @@ The only other modifications you'll need are:
 1. Expose `443:443` in `/binci.yml`
 2. In `/web/vite.config.js` set `server.hmr.port` to `443` and `server.hmr.protocol` to `wss`
 
-## Deploying
+## Deployment
 
-I didn't define any deploy scripting simply because it's fairly simple. For the functions moving through them and running `sls deploy` is the starting point.
+We want to ensure that only the services that have been updated get deployed. This means that, if a change is made to:
 
-For the web app my go to is typically `S3` and `CloudFront` so scripting an `S3` push to your bucket, then running a `CloudFront` invalidation call would be the extent of it.
+- functions and web
 
-Things like comparing the diff's in the git history pre-deploy are a good idea in order to only deploy what's changed.
+  Only the function that has been changed should be deployed. For ex, if you only change code in `auth`, then `socket` should not be deployed as a result.
+
+- shared
+
+  If a shared package is changed, then only the function(s) that depend on this package should be deployed. For ex, if `logger` is changed, then `auth` should be deployed.
+
+- common files
+
+  If any global code is changed, then all services will get deployed.
+
+### Deployment Algorithm
+
+The following steps produce reasonably small deployment plans. This can be improved on by using tooling that introspects which functions use which shared packages.
+
+1. Run `lerna ls --since ${prevCommitSHA} -all` to list all packages that have changed since the last successful deployment. If this list includes one of the services, then deploy it.
+2. Run `git diff --name-only ${prevCommitSHA} ${currentCommitSHA}` to get a list of all the updated files. If they don't belong to any of your Lerna packages (`lerna ls -all`), deploy all the services.
+3. Otherwise skip the deployment.
