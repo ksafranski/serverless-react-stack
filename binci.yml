@@ -1,4 +1,6 @@
-from: serverless-react-stack
+dockerfile: ./docker/Dockerfile
+rebuildOnChange:
+  - ./docker/nginx.conf
 workDir: /app
 # services:
 #   - mongo:
@@ -15,18 +17,9 @@ expose:
 # before: |
 #   export MONGO_CONN=mongodb://foo:bar@$MONGO_PORT_27017_TCP_ADDR:27017
 tasks:
-  install:base:
+  install:
     disable: '*'
     cmd: yarn
-  install:web:
-    disable: '*'
-    cmd: cd web && yarn
-  install:functions:
-    disable: '*'
-    cmd: for d in /app/functions/*/; do cd "$d" && echo ">>> Installing for functions/$d" && yarn; done
-  install:shared:
-    disable: '*'
-    cmd: for d in /app/shared/*/; do cd "$d" && echo ">>> Installing for shared/$d" && yarn; done
   env: env | sort
   shell: /bin/sh
   dev: |

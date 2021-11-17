@@ -24,12 +24,12 @@ provider:
 
 functions:
   hello:
-    handler: handler.ping
+    handler: src/handler.ping
     events:
       - httpApi:
           path: /ping
           method: get
 
 plugins:
-  - serverless-plugin-typescript
+  - serverless-bundle
   - serverless-offline
