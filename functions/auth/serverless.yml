@@ -1,9 +1,10 @@
 service: auth
+frameworkVersion: ">=2.0.0"
+variablesResolutionMode: 20210326
+projectDir: ../..
 # app and org for use with dashboard.serverless.com
 #app: your-app-name
 #org: your-org-name
-
-frameworkVersion: '2'
 
 provider:
   name: aws
